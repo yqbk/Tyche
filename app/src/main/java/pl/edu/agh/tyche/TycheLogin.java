@@ -207,6 +207,7 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
+//        176.115.10.86:9000/api//questions/
         return true;
     }
 
