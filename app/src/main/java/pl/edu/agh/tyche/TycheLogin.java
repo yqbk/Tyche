@@ -30,6 +30,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,9 +112,22 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
             @Override
             public void run() {
                 try {
+
+                    String url = "http://176.115.10.86:9000/oauth/token";
+                    JSONObject json = new JSONObject();
+                    json.put("username", "user");
+                    json.put("password", "Admin123!@#");
+                    json.put("grant_type", "password");
+
+                    String method = "POST";
+                    int timeout = 100;
                     RestClient client = new RestClient();
 
-                } catch(IOException e){  }
+                    client.getJSON(url, json.toString(), timeout, method);
+
+                } catch(IOException e){  } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
