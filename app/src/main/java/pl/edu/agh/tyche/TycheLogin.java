@@ -115,7 +115,7 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
 
                     String url = "http://176.115.10.86:9000/oauth/token";
                     JSONObject json = new JSONObject();
-                    json.put("username", "user");
+                    json.put("username", "admin");
                     json.put("password", "Admin123!@#");
                     json.put("grant_type", "password");
 
@@ -123,7 +123,7 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
                     int timeout = 100;
                     RestClient client = new RestClient();
 
-                    client.getJSON(url, json.toString(), timeout, method);
+                    client.getJSON(url, json, timeout, method);
 
                 } catch(IOException e){  } catch (JSONException e) {
                     e.printStackTrace();

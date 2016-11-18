@@ -4,12 +4,16 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
+
 import org.apache.http.*;
+import org.json.JSONObject;
 
 // RestClient.java
 public class RestClient{
@@ -45,7 +49,7 @@ public class RestClient{
 //        }
     }
 
-        public static String getJSON(String url, String json, int timeout, String method) {
+        public static String getJSON(String url, JSONObject json, int timeout, String method) {
         HttpURLConnection connection = null;
         try {
 
@@ -53,29 +57,55 @@ public class RestClient{
             connection = (HttpURLConnection) u.openConnection();
             connection.setRequestMethod(method);
 
-            //set the sending type and receiving type to json
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Accept", "application/json");
+            connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+//            String encoded = URLEncoder.encode(json.toString(), "UTF-8");
 
-            connection.setAllowUserInteraction(false);
-            connection.setConnectTimeout(timeout);
-            connection.setReadTimeout(timeout);
+            String body =
+                    "username=" + URLEncoder.encode ("admin") +
+                    "&password=" + URLEncoder.encode ("Admin123!@#") +
+                    "&grant_type=" + URLEncoder.encode ("password");
 
-            if (json != null) {
-                //set the content length of the body
-                connection.setRequestProperty("Content-length", json.getBytes().length + "");
-                connection.setDoInput(true);
-                connection.setDoOutput(true);
-                connection.setUseCaches(false);
+//            connection.setUseCaches(false);
+//            connection.setRequestProperty("User-Agent", "MyAgent");
+//            connection.setConnectTimeout(30000);
+//            connection.setReadTimeout(30000);
 
-                //send the json as body of the request
-                OutputStream outputStream = connection.getOutputStream();
-                outputStream.write(json.getBytes("UTF-8"));
-                outputStream.close();
-            }
+//            String baseAuthStr = APIKEY + ":" + APISECRET;
+//            connection.addRequestProperty("Authorization", "Basic " + baseAuthStr);
 
-            //Connect to the server
+//            connection.connect();
+
+//            //set the sending type and receiving type to json
+//            connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+//            connection.setRequestProperty("Accept", "application/json");
+//
+//            connection.setAllowUserInteraction(false);
+//            connection.setConnectTimeout(timeout);
+//            connection.setReadTimeout(timeout);
+//
+//            if (json != null) {
+//                //set the content length of the body
+////                connection.setRequestProperty("Content-length", json.getBytes().length + "");
+
+//
+//                //send the json as body of the request
+//                OutputStream outputStream = connection.getOutputStream();
+//                outputStream.write(encoded.getBytes("UTF-8"));
+//                outputStream.close();
+//            }
+//
+//            //Connect to the server
+
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setUseCaches(false);
+
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(body.getBytes("UTF-8"));
+            outputStream.close();
             connection.connect();
+
+//            InputStream error = connection.getErrorStream();
 
             int status = connection.getResponseCode();
             Log.i("HTTP Client", "HTTP status code : " + status);
