@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,8 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
+
+    private boolean flag = false;
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -108,28 +111,6 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-
-                    String url = "http://176.115.10.86:9000/oauth/token";
-                    JSONObject json = new JSONObject();
-                    json.put("username", "admin");
-                    json.put("password", "Admin123!@#");
-                    json.put("grant_type", "password");
-
-                    String method = "POST";
-                    int timeout = 100;
-                    RestClient client = new RestClient();
-
-                    client.getJSON(url, json, timeout, method);
-
-                } catch(IOException e){  } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
     }
     private void populateAutoComplete() {
@@ -199,7 +180,7 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(email, password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -238,9 +219,41 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
         return true;
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return true;
+    private boolean isPasswordValid(final String login, final String password) {
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    String url = "http://176.115.10.86:9000/oauth/token";
+                    JSONObject json = new JSONObject();
+                    json.put("username", login);
+                    json.put("password", password);
+                    json.put("grant_type", "password");
+
+                    String method = "POST";
+                    int timeout = 100;
+                    RestClient client = new RestClient();
+
+                    flag =  client.getToken(url, json, timeout, method);
+
+//                    url = "http://176.115.10.86:9000";
+//
+//                    String data = "/api/accounts/users";
+//
+//                    String test = client.getData(url, timeout, data);
+//
+//                    System.out.print(test);
+
+
+                } catch(IOException e){  } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        return flag;
     }
 
     /**
