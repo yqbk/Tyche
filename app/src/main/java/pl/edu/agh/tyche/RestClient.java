@@ -20,6 +20,11 @@ public class RestClient{
 
     private static String token = "";
 
+    public static String getToken()
+    {
+        return token;
+    }
+
     public RestClient() throws IOException {
 
     }
