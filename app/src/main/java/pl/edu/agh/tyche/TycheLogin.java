@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.content.Intent;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,8 +104,18 @@ public class TycheLogin extends AppCompatActivity implements LoaderCallbacks<Cur
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-    }
 
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    RestClient client = new RestClient();
+
+                } catch(IOException e){  }
+            }
+        });
+
+    }
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;

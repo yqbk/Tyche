@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "pl.edu.agh.tyche"
         minSdkVersion 14

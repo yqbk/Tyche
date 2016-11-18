@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="ba761954ee832ce9431d22cf128ee540b8068ae8">
+        sha1="c12f5e81cc29494fd2816513ae441549640075f7">
         <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_42ab210a45f4e525b7d359709e2897768490d03c/classes.dex" />
     </item>
     <item
@@ -79,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="9e47e86942322cd09deda79af8beee2236dbc0a6">
+        sha1="fc1a2d422354fc9f8b7512be4a6c5a0f904762bf">
         <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3358879e715c905e044a0b1410c43b70ec174404/classes.dex" />
     </item>
     <item
