@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void setData(String path)
+    private void setData(final String path)
     {
         AsyncTask.execute(new Runnable() {
             @Override
@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity
                     RestClient client = new RestClient();
                     int timeout = 100;
                     String url = "http://176.115.10.86:9000";
-                    data = client.getData(url, timeout, data);
+                    String test = client.getData(url, timeout, path);
+                    System.out.print(test);
+                    data = test;
 
                 } catch(IOException e){
                     e.printStackTrace();
