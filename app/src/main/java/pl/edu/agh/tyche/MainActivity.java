@@ -32,8 +32,21 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+//        ----------------------------------------------
+//        ---------- TUTAJ MASZ DOMINIK ----------
+//        ----------------------------------------------
+
         String path = "/api/accounts/users";
         setData(path);
+        System.out.print(data);
+
+
+//          DANE DO LOGOWANIA: admin, Admin123!@#
+
+
+//        ----------------------------------------------
+//        ---------------- TYLE, NIZEJ METODA-----------
+//        ----------------------------------------------
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +67,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+//        ----------------------------------------------
+//        ---------- TUTAJ MASZ METODE ----------
+//        ----------------------------------------------
     private void setData(final String path)
     {
         AsyncTask.execute(new Runnable() {
@@ -64,7 +80,6 @@ public class MainActivity extends AppCompatActivity
                     int timeout = 100;
                     String url = "http://176.115.10.86:9000";
                     String test = client.getData(url, timeout, path);
-                    System.out.print(test);
                     data = test;
 
                 } catch(IOException e){
