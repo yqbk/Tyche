@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity
     private String data = "";
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private Bitmap imageBitmap;
-//    private String mCurrentPhotoPath;
     private ImageView egzamin;
 
     @Override
@@ -142,15 +141,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_dashboard) {
+        if (id == R.id.nav_qr) {
             // Handle the camera action
-        } else if (id == R.id.nav_profile) {
 
         } else if (id == R.id.nav_scan) {
 
             dispatchTakePictureIntent();
-
-        } else if (id == R.id.nav_students) {
 
         } else if (id == R.id.nav_logout) {
             Intent myIntent = new Intent(this, TycheLogin.class);
@@ -178,12 +174,11 @@ public class MainActivity extends AppCompatActivity
 
             if (extras.keySet().contains("data") ){
                 imageBitmap = (Bitmap) extras.get("data");
-//                int idResource = getResources().getIdentifier( ,"id", getPackageName())
                 ImageView imageView = (ImageView) findViewById(R.id.imageView2);
                 imageView.setImageBitmap(imageBitmap);
             } else
             {
-                System.out.print("\n\n\n\n test \n\n\n\n");
+                System.out.print("\n\n\n\n don't have data \n\n\n\n");
             }
         }
     }
