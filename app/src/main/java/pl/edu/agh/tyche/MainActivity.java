@@ -1,10 +1,16 @@
 package pl.edu.agh.tyche;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,16 +20,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private String data = "";
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private Bitmap imageBitmap;
+//    private String mCurrentPhotoPath;
+    private ImageView egzamin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +148,8 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_scan) {
 
+            dispatchTakePictureIntent();
+
         } else if (id == R.id.nav_students) {
 
         } else if (id == R.id.nav_logout) {
@@ -144,4 +161,31 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK && data!=null) {
+            Bundle extras = data.getExtras();
+
+            if (extras.keySet().contains("data") ){
+                imageBitmap = (Bitmap) extras.get("data");
+//                int idResource = getResources().getIdentifier( ,"id", getPackageName())
+                ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+                imageView.setImageBitmap(imageBitmap);
+            } else
+            {
+                System.out.print("\n\n\n\n test \n\n\n\n");
+            }
+        }
+    }
+
 }
