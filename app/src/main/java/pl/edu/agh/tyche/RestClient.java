@@ -1,5 +1,6 @@
 package pl.edu.agh.tyche;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -19,6 +20,8 @@ import org.json.JSONObject;
 public class RestClient{
 
     private static String token = "";
+
+    private static String response = "";
 
     public static String getToken()
     {
@@ -40,8 +43,8 @@ public class RestClient{
         connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 
         String body =
-                "username=" + URLEncoder.encode ("admin") +
-                "&password=" + URLEncoder.encode ("Admin123!@#") +
+                "username=" + URLEncoder.encode (json.getString("username")) +
+                "&password=" + URLEncoder.encode (json.getString("password")) +
                 "&grant_type=" + URLEncoder.encode ("password");
 
 
@@ -137,5 +140,67 @@ public class RestClient{
             }
         }
         return "";
+    }
+
+
+    public static void sendData(String url, int timeout, String data) {
+        HttpURLConnection connection = null;
+        try {
+            URL u = new URL(url);
+            connection = (HttpURLConnection) u.openConnection();
+            connection.setRequestMethod("POST");
+
+            connection.addRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+
+            String body = "img:" + data;
+//                    "username=" + URLEncoder.encode ("admin") +
+//                            "&password=" + URLEncoder.encode ("Admin123!@#") +
+//                            "&grant_type=" + URLEncoder.encode ("password");
+
+
+            connection.setDoInput(true);
+            connection.setDoOutput(true);
+            connection.setUseCaches(false);
+
+            OutputStream outputStream = connection.getOutputStream();
+            outputStream.write(body.getBytes("UTF-8"));
+            outputStream.close();
+            connection.connect();
+
+//            InputStream error = connection.getErrorStream();
+
+            int status = connection.getResponseCode();
+            Log.i("HTTP Client", "HTTP status code : " + status);
+            switch (status) {
+                case 200:
+                case 201:
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        sb.append(line + "\n");
+                    }
+                    bufferedReader.close();
+                    Log.i("HTTP Client", "Received String : " + sb.toString());
+                    //return received string
+                    JSONObject token_json = new JSONObject(sb.toString());
+                    response = (String) token_json.get("access_token");
+            }
+
+        } catch (MalformedURLException ex) {
+            Log.e("HTTP Client", "Error in http connection" + ex.toString());
+        } catch (IOException ex) {
+            Log.e("HTTP Client", "Error in http connection" + ex.toString());
+        } catch (Exception ex) {
+            Log.e("HTTP Client", "Error in http connection" + ex.toString());
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.disconnect();
+                } catch (Exception ex) {
+                    Log.e("HTTP Client", "Error in http connection" + ex.toString());
+                }
+            }
+        }
     }
 }

@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7b123fd2ce6bca0e42a37440a902bbe22668c51f">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3358879e715c905e044a0b1410c43b70ec174404/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -39,48 +30,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_86b3db3cbfe25ba19a75165f125f69fe4750ffeb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_8112390558378c90b48bbf5b64ce436d8891ab1c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
         <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_c2da522eba06192ee1db7296ea28bb2ea96943a6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_9f6ea90c09b0760fb6450323cd8967e05dee2b8a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_1d9eb50ccb6ab024ece981bbbc1d451662968eae/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -102,6 +57,69 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9b9c27d1d939a26eccad34ad882182e063f59fc2">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_42ab210a45f4e525b7d359709e2897768490d03c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_43030392d2b7759ba0b04a1e16a073cc29da82b5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="05d304a2c98f66c5f82ca80bf09d6b21499b2303">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3358879e715c905e044a0b1410c43b70ec174404/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_86b3db3cbfe25ba19a75165f125f69fe4750ffeb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_8112390558378c90b48bbf5b64ce436d8891ab1c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_9f6ea90c09b0760fb6450323cd8967e05dee2b8a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_1d9eb50ccb6ab024ece981bbbc1d451662968eae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/yqbk/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -117,24 +135,6 @@
         revision="24.0.3"
         sha1="867dad63c33388ff8c7644b236579355036d075f">
         <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_4852334335a7c1ced5ad5f2c540c3a92d4df4c03/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="de250cd395f79cc51305229d77d77a177f00ea00">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_42ab210a45f4e525b7d359709e2897768490d03c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/home/yqbk/Desktop/nowy_tyche/AndroidStudioProjects/Tyche/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_43030392d2b7759ba0b04a1e16a073cc29da82b5/classes.dex" />
     </item>
     <item
         is-multidex="true"

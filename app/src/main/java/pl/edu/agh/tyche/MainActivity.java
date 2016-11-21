@@ -1,7 +1,10 @@
 package pl.edu.agh.tyche;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +13,7 @@ import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -20,6 +24,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import org.json.JSONException;
@@ -27,9 +32,12 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -46,21 +54,60 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        ----------------------------------------------
-//        ---------- TUTAJ MASZ DOMINIK ----------
-//        ----------------------------------------------
-
-        String path = "/api/accounts/users";
-        setData(path);
-        System.out.print(data);
+//        SERVER API
+        setData("/api/accounts/users");
 
 
-//          DANE DO LOGOWANIA: admin, Admin123!@#
+        final Button button = (Button) findViewById(R.id.button2);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                Bitmap exam = imageBitmap;
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                exam.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] imageBytes = baos.toByteArray();
+
+                sendData(Base64.encodeToString(imageBytes, Base64.DEFAULT));
+
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("Info");
+                alertDialog.setMessage("Egzamin przesłany do oceny");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+                imageView.setImageResource(R.drawable.logo);
+
+                alertDialog.show();
+            }
+        });
+
+        final Button buttonCancel = (Button) findViewById(R.id.button);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                alertDialog.setTitle("Error");
+                alertDialog.setMessage("Anulowanie przesyłania egzaminu");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                ImageView imageView = (ImageView) findViewById(R.id.imageView2);
+                imageView.setImageResource(R.drawable.logo);
+
+                alertDialog.show();
+            }
+        });
 
 
-//        ----------------------------------------------
-//        ---------------- TYLE, NIZEJ METODA-----------
-//        ----------------------------------------------
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -81,9 +128,34 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-//        ----------------------------------------------
-//        ---------- TUTAJ MASZ METODE ----------
-//        ----------------------------------------------
+    public Bitmap getScreenshotBmp() {
+
+
+        FileOutputStream fileOutputStream = null;
+
+        File path = Environment
+                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+
+        String uniqueID = UUID.randomUUID().toString();
+
+        File file = new File(path, uniqueID + ".jpg");
+        try {
+            fileOutputStream = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 30, fileOutputStream);
+
+        try {
+            fileOutputStream.flush();
+            fileOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return imageBitmap;
+    }
+
     private void setData(final String path)
     {
         AsyncTask.execute(new Runnable() {
@@ -95,6 +167,24 @@ public class MainActivity extends AppCompatActivity
                     String url = "http://176.115.10.86:9000";
                     String test = client.getData(url, timeout, path);
                     data = test;
+
+                } catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    private void sendData(final String data)
+    {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    RestClient client = new RestClient();
+                    int timeout = 100;
+                    String url = "http://176.115.10.86:9000/api/exam/img";
+                        client.sendData(url, timeout, data);
 
                 } catch(IOException e){
                     e.printStackTrace();
